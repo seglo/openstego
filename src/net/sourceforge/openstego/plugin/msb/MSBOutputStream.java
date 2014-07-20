@@ -244,14 +244,14 @@ public class MSBOutputStream extends OutputStream
         // Set the bit value
         if(bitValue)
         {
-            newPixel = pixel | 1 << (bit + (channel * 8));
+            newPixel = pixel | 7 << (bit + (channel * 8));
         }
         else
         {
             newColor = 0xfffffffe;
             for(int i = 0; i < (bit + (channel * 8)); i++)
             {
-                newColor = (newColor << 1) | 0x1;
+                newColor = (newColor << 7) | 0x1;
             }
             newPixel = pixel & newColor;
         }
